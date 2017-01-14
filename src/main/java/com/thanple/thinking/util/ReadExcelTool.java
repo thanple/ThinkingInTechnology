@@ -120,7 +120,7 @@ public class ReadExcelTool {
 
                   // 注意：一定要设成这个，否则可能会出现乱码
 
-                  cell.setEncoding(HSSFCell.ENCODING_UTF_16);
+//                  cell.setEncoding(HSSFCell.ENCODING_UTF_16);
 
                   switch (cell.getCellType()) {
 

@@ -45,10 +45,10 @@ public class DynamicClassForInterface {
 	public static void main(String[] args) {
 		
 		IA t = new IAImpl();
-		InvocationHandler handler = new DynamicProxy(t);
+		InvocationHandler handler = new DynamicProxyTest(t);
 		
 		Class<?> c1 = Proxy.getProxyClass(
-				DynamicProxy.class.getClassLoader(), 
+				DynamicProxyTest.class.getClassLoader(),
 				IAImpl.class.getInterfaces()
 			);
 		

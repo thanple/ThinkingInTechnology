@@ -1,9 +1,8 @@
 package com.thanple.application.webspider.caishuo;
 
-import com.thanple.webspider.caishuo.Dao.BasketDao;
-import com.thanple.webspider.caishuo.Dao.HibernateUtil;
-import com.thanple.webspider.caishuo.Model.Basket;
-import com.thanple.webspider.caishuo.Model.BasketInf;
+import com.thanple.application.webspider.caishuo.Dao.HibernateUtil;
+import com.thanple.application.webspider.caishuo.Model.Basket;
+import com.thanple.application.webspider.caishuo.Model.BasketInf;
 import lombok.Data;
 import org.hibernate.classic.Session;
 import org.jsoup.nodes.Document;
