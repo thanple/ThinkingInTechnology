@@ -61,13 +61,15 @@ public class BerkeleyDBManager {
 
 
     public synchronized void close(){
-        if(null != environment){
-            environment.close();
-        }
 
         if(null != database){
             database.close();
         }
+
+        if(null != environment){
+            environment.close();
+        }
+
     }
 
     public Environment getEnvironment() {

@@ -104,6 +104,6 @@ public class Test {
         new Procedure11().submit(); //插入数据
         new Procedure2().submit(); //读取数据
 
-//        BerkeleyDBManager.getInstance().close();
+        BerkeleyDBManager.getInstance().close();
     }
 }
