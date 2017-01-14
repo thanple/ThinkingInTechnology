@@ -44,7 +44,7 @@ public class Test {
 
     }
 
-    private static class Procedure1 extends Procedure{
+    private static class Procedure11 extends Procedure{
 
         @Override
         protected boolean process() {
@@ -54,7 +54,27 @@ public class Test {
             Obj1 obj1 = new Obj1();
             obj1.setA(1);
             obj1.setB(2);
-            obj1.setC("3");
+            obj1.setC("11");
+
+            dao.insert(1,obj1);
+
+            //事务传播测试
+            pexecute(new Procedure12());
+
+            return true;
+        }
+    }
+    private static class Procedure12 extends Procedure{
+
+        @Override
+        protected boolean process() {
+
+            Dao dao = new Dao();
+
+            Obj1 obj1 = new Obj1();
+            obj1.setA(1);
+            obj1.setB(2);
+            obj1.setC("12");
             dao.insert(2,obj1);
 
             return true;
@@ -67,7 +87,10 @@ public class Test {
         protected boolean process() {
 
             Dao dao = new Dao();
-            Obj1 obj1 = dao.select(2);
+            Obj1 obj1 = dao.select(1);
+            System.out.println("a="+obj1.getA()+" b="+obj1.getB()+" c="+obj1.getC());
+
+            obj1 = dao.select(2);
             System.out.println("a="+obj1.getA()+" b="+obj1.getB()+" c="+obj1.getC());
 
             return true;
@@ -78,9 +101,9 @@ public class Test {
 
         BerkeleyDBManager.getInstance().open();
 
-        new Procedure1().submit();
-        new Procedure2().submit();
+        new Procedure11().submit(); //插入数据
+        new Procedure2().submit(); //读取数据
 
-        BerkeleyDBManager.getInstance().close();
+//        BerkeleyDBManager.getInstance().close();
     }
 }

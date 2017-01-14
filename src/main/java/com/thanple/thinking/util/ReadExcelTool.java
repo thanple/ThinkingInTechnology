@@ -12,6 +12,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import com.thanple.thinking.root.Constant;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFDateUtil;
 import org.apache.poi.hssf.usermodel.HSSFRow;
@@ -27,8 +28,8 @@ import org.apache.poi.poifs.filesystem.POIFSFileSystem;
  * */
 public class ReadExcelTool {
 	public static void main(String[] args) throws FileNotFoundException, IOException {
-			
-	       File file = new File("src/com/thanple/resource/学生自然信息.xls");
+
+	       File file = new File(Constant.Path.RUN_CLASS_PATH+"/学生自然信息.xls");
 	       
 	       String[][] result = getData(file, 1);	//1代表忽略行数
 
