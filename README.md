@@ -1,2 +1,2 @@
-# ThinkingInWorld
+# ThinkingInTechnology
 All programming of thinking
