@@ -102,7 +102,7 @@ public class Test {
         BerkeleyDBManager.getInstance().open();
 
         new Procedure11().submit(); //插入数据
-        new Procedure2().submit(); //读取数据
+        new Procedure2().submit(); //读取数据2
 
         BerkeleyDBManager.getInstance().close();
     }
