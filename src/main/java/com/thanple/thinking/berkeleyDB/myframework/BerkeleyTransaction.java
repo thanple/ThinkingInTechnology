@@ -6,11 +6,15 @@ import com.sleepycat.je.TransactionConfig;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Thanple on 2017/1/13.
  */
 public class BerkeleyTransaction {
+
+    //加锁最长时间
+    private static final int LOCK_TIME_OUT = 10000;
 
     private static ThreadLocal<Transaction> current = new ThreadLocal<>();
     private static ThreadLocal<ArrayList<Boolean>> results = new ThreadLocal<ArrayList<Boolean>>(){
@@ -41,6 +45,7 @@ public class BerkeleyTransaction {
         Environment environment = BerkeleyDBManager.getInstance().getEnvironment();
         if(null == BerkeleyTransaction.currentTransaction()){
             Transaction transaction = environment.beginTransaction(null, TransactionConfig.DEFAULT);
+            transaction.setLockTimeout(LOCK_TIME_OUT, TimeUnit.MILLISECONDS);
             BerkeleyTransaction.setTransaction(transaction);
         }
     }

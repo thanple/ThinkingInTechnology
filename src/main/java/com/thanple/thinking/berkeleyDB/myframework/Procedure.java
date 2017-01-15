@@ -47,6 +47,12 @@ public abstract class Procedure {
         //执行procedure
         this.runProcedure();
 
+        //更新锁住的数据（即get出来的数据）
+
+
+        //释放keylock
+        BerkeleyKeyLockUtil.unlockAll();
+
         //提交事务
         BerkeleyTransaction.commit();
     }
