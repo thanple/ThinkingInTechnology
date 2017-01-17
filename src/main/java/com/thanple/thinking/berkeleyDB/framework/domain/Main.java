@@ -131,6 +131,45 @@ public class Main {
             }
         }
         executorService.shutdownNow();
+
+
+
+
+        /**
+         * 当取出数据为空的时候插入数据
+         * */
+        new Procedure() {
+            @Override
+            protected boolean process() {
+
+                UserTable user = TableLoader.getTableInstance(UserTable.class);
+                User userEntity = user.select(3L);
+                if(userEntity == null){
+                    User user1 = new User();
+                    user1.setId(3L);
+                    user.insert(3L,user1);
+                }
+                return true;
+            }
+        }.submit();
+        new Procedure() {
+            @Override
+            protected boolean process() {
+                UserTable user = TableLoader.getTableInstance(UserTable.class);
+                User userEntity = user.select(3L);
+                System.out.println(userEntity);
+                return true;
+            }
+        }.submit();
+
+
+
+
+
+
+
+
+
         manager.close();
     }
 
@@ -159,4 +198,5 @@ public class Main {
             }
         }.submit();
     }
+
 }
