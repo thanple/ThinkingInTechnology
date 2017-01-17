@@ -44,26 +44,32 @@ public abstract class Procedure {
 
     public void submit(){
 
-        //开启事务
-        TransactionManager.startTransaction();
+        try {
+            //开启事务
+            TransactionManager.startTransaction();
 
-        //执行procedure
-        this.runProcedure();
+            //执行procedure
+            this.runProcedure();
 
-        //更新锁住的数据（即get出来的数据）
-        for(LockKeysUtil.LockItem lockItem : LockKeysUtil.getLocalLockItems()){
-            TTable tTable = lockItem.getTtTable();
-            Long key = lockItem.getKey();
-            Serializable entityValue = lockItem.getEntity();
+            //更新锁住的数据（即get出来的数据）
+            for(LockKeysUtil.LockItem lockItem : LockKeysUtil.getLocalLockItems()){
+                TTable tTable = lockItem.getTtTable();
+                Long key = lockItem.getKey();
+                Serializable entityValue = lockItem.getEntity();
 
-            tTable.save(key,entityValue);
+                tTable.save(key,entityValue);
+            }
+
+        }catch (Exception e){
+            TransactionManager.savePoint(false);    //回滚事务
+            e.printStackTrace();
+        }finally {
+            //释放keylock(这样做的好处是当前Procedure如果抛出异常也继续释放锁)
+            LockKeysUtil.unlockAll();
+            //提交事务
+            TransactionManager.commit();
         }
 
-        //释放keylock
-        LockKeysUtil.unlockAll();
-
-        //提交事务
-        TransactionManager.commit();
     }
 
     //同步执行函数,当形参执行完后执行

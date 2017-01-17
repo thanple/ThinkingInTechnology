@@ -1,6 +1,7 @@
 package com.thanple.thinking.berkeleyDB.framework.table;
 
 import com.sleepycat.je.Database;
+import com.thanple.thinking.berkeleyDB.framework.dataprovider.TableLoader;
 import com.thanple.thinking.berkeleyDB.framework.exception.BerkeleyDataAccessException;
 import com.thanple.thinking.berkeleyDB.framework.manager.TransactionManager;
 import com.thanple.thinking.berkeleyDB.framework.util.AccessTemplate;

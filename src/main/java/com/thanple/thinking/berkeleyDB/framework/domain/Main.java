@@ -1,8 +1,10 @@
 package com.thanple.thinking.berkeleyDB.framework.domain;
 
+import com.thanple.thinking.berkeleyDB.framework.dataprovider.TableLoader;
 import com.thanple.thinking.berkeleyDB.framework.entity.User;
 import com.thanple.thinking.berkeleyDB.framework.manager.DBManager;
 import com.thanple.thinking.berkeleyDB.framework.table.UserTable;
+import com.thanple.thinking.berkeleyDB.framework.util.LockKeysUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +30,7 @@ public class Main {
                 User user = new User();
                 user.setId(1L);
                 user.setName("Thanple1");
-                UserTable.getInstance().save(user.getId(),user);
+                TableLoader.getTableInstance(UserTable.class).save(user.getId(),user);
 
                 pexecute(new Procedure() {
                     @Override
@@ -37,7 +39,7 @@ public class Main {
                         user.setId(2L);
                         user.setName("Thanple2");
 
-                        UserTable.getInstance().save(user.getId(),user);
+                        TableLoader.getTableInstance(UserTable.class).save(user.getId(),user);
 
                         return true;
                     }
@@ -51,7 +53,7 @@ public class Main {
             @Override
             protected boolean process() {
 
-                UserTable user = UserTable.getInstance();
+                UserTable user = TableLoader.getTableInstance(UserTable.class);
                 User userEntity1 = user.select(1L);
                 User userEntity2 = user.select(2L);
 
@@ -70,21 +72,23 @@ public class Main {
             @Override
             protected boolean process() {
 
-                UserTable user = UserTable.getInstance();
+                UserTable user = TableLoader.getTableInstance(UserTable.class);
                 User userEntity1 = user.get(1L);
                 User userEntity2 = user.get(2L);
 
                 userEntity1.setName("Tom1");
                 userEntity2.setName("Tom2");
 
-                return true;
+                throw new RuntimeException("测试锁的释放");
+
+//                return true;
             }
         }.submit();
         new Procedure() {
             @Override
             protected boolean process() {
 
-                UserTable user = UserTable.getInstance();
+                UserTable user = TableLoader.getTableInstance(UserTable.class);
                 User userEntity1 = user.select(1L);
                 User userEntity2 = user.select(2L);
 
@@ -105,10 +109,11 @@ public class Main {
             Runnable runnable = new Runnable() {
                 @Override
                 public void run() {
+                    LockKeysUtil.lock(TableLoader.getTableInstance(UserTable.class),1L,2L);  //锁排序
                     if(count%2==0){
                         testDeadLock(1L,2L);
                     }else{
-//                        testDeadLock(2L,1L);
+                        testDeadLock(2L,1L);
                     }
 
                 }
@@ -136,7 +141,7 @@ public class Main {
             @Override
             protected boolean process() {
 
-                UserTable user = UserTable.getInstance();
+                UserTable user = TableLoader.getTableInstance(UserTable.class);
                 User userEntity1 = user.get(user1);
 
                 try {

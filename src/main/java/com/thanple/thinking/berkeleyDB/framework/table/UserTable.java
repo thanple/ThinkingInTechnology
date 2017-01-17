@@ -13,9 +13,5 @@ public class UserTable extends TTable<User>{
         super(table);
     }
 
-    public static UserTable getInstance(){
-        return (UserTable)TableLoader.getTables().get("UserTable");
-    }
-
 
 }

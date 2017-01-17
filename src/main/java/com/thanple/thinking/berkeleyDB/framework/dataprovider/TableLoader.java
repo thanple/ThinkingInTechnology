@@ -17,19 +17,16 @@ public class TableLoader {
 
     private static List<String> tableNames = new ArrayList<>();
 
-    //此处加载所有表的名字
+    /**
+     * 从TTable所在目录下获取所有的表
+     * */
     static {
-        //从TTable目录下获取
-        try {
-            File dictionary = new File(TTable.class.getResource("").toURI());
-            for(File file : dictionary.listFiles()){
-                String name = file.getName();
-                if(name.endsWith(".class") && !name.equals("TTable.class")){
-                    tableNames.add(name.substring(0,name.indexOf(".class")));
-                }
+        File dictionary = new File(ConfigConst.TABLE_DIR);
+        for(File file : dictionary.listFiles()){
+            String name = file.getName();
+            if(name.endsWith(".class") && !name.equals("TTable.class")){
+                tableNames.add(name.substring(0,name.indexOf(".class")));
             }
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
         }
     }
 
@@ -37,14 +34,29 @@ public class TableLoader {
         return tableNames;
     }
 
-    //key:表名 value:TTable
-    private static Map<String,TTable> tables = new HashMap<>();
+
+
+    /**
+     * key:表名类 value:TTable
+     * 享元模式
+     * */
+    private static Map<Class,TTable> tables = new HashMap<>();
 
     public static void putTTable(TTable tTable){
-        tables.put(tTable.toString(),tTable);
+        tables.put(tTable.getClass(),tTable);
     }
 
-    public static Map<String, TTable> getTables() {
+    public static Map<Class, TTable> getTables() {
         return tables;
+    }
+
+    /**
+     * 获取TTable实例
+     * TTable在Map<Class,tables>享元
+     * @param Class<TB> tableClass
+     * @return TB
+     * */
+    public static <TB extends TTable> TB getTableInstance(Class<TB> tableClass){
+        return (TB)tables.get(tableClass);
     }
 }

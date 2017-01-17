@@ -80,7 +80,7 @@ public class DBManager  {
         public synchronized void close(){
 
             //关闭每个数据库
-            Map<String, TTable> tables= TableLoader.getTables();
+            Map<Class, TTable> tables= TableLoader.getTables();
             if(null != tables){
                 for(TTable table : tables.values()){
                     table.close();

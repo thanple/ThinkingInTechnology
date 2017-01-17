@@ -11,7 +11,5 @@ public class TeamTable extends TTable<Team>{
     public TeamTable(Database table) {
         super(table);
     }
-    public static TeamTable getInstance(){
-        return (TeamTable) TableLoader.getTables().get("TeamTable");
-    }
+
 }
