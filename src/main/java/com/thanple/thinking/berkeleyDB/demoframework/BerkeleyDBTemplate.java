@@ -1,7 +1,6 @@
-package com.thanple.thinking.berkeleyDB.myframework;
+package com.thanple.thinking.berkeleyDB.demoframework;
 
 import com.sleepycat.je.*;
-import com.thanple.thinking.berkeleyDB.demo1.BDBDataAccessException;
 import com.thanple.thinking.util.SerializeUtil;
 
 import java.io.Serializable;

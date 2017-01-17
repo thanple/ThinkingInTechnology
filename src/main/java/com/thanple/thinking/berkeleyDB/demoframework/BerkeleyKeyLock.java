@@ -1,4 +1,4 @@
-package com.thanple.thinking.berkeleyDB.myframework;
+package com.thanple.thinking.berkeleyDB.demoframework;
 
 import java.util.HashMap;
 import java.util.Map;

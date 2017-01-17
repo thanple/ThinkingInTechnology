@@ -1,11 +1,10 @@
-package com.thanple.thinking.berkeleyDB.myframework;
+package com.thanple.thinking.berkeleyDB.demoframework;
 
 import com.sleepycat.je.Environment;
 import com.sleepycat.je.Transaction;
 import com.sleepycat.je.TransactionConfig;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**

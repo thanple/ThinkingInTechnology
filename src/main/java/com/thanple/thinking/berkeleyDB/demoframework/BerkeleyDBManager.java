@@ -1,4 +1,4 @@
-package com.thanple.thinking.berkeleyDB.myframework;
+package com.thanple.thinking.berkeleyDB.demoframework;
 
 import com.sleepycat.je.Database;
 import com.sleepycat.je.DatabaseConfig;
