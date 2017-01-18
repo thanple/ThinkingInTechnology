@@ -16,7 +16,6 @@ public class ConfigConst {
 
     public static final String TABLE_PACKAGE = TTable.class.getPackage().getName();
     public static URI TABLE_DIR = null;
-
     static {
         try {
             TABLE_DIR = TTable.class.getResource("").toURI();

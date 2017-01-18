@@ -1,5 +1,6 @@
 package com.thanple.thinking.berkeleyDB.framework.domain;
 
+import com.thanple.thinking.berkeleyDB.framework.exception.BerkeleyNotInProcedureException;
 import com.thanple.thinking.berkeleyDB.framework.manager.TransactionManager;
 import com.thanple.thinking.berkeleyDB.framework.table.TTable;
 import com.thanple.thinking.berkeleyDB.framework.util.LockKeysUtil;
@@ -45,6 +46,10 @@ public abstract class Procedure {
     public void submit(){
 
         try {
+
+            //进入Procedure标志
+            BerkeleyNotInProcedureException.beginInTheProcedure();
+
             //开启事务
             TransactionManager.startTransaction();
 
@@ -60,14 +65,23 @@ public abstract class Procedure {
                 tTable.save(key,entityValue);
             }
 
+
         }catch (Exception e){
             TransactionManager.savePoint(false);    //回滚事务
             e.printStackTrace();
         }finally {
+
+            //get出来的数据保存的引用全部清空
+            LockKeysUtil.getLocalLockItems().clear();
+
             //释放keylock(这样做的好处是当前Procedure如果抛出异常也继续释放锁)
             LockKeysUtil.unlockAll();
+
             //提交事务
             TransactionManager.commit();
+
+            //离开Procedure标志
+            BerkeleyNotInProcedureException.endInTheProcedure();
         }
 
     }

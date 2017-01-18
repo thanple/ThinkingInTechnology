@@ -113,13 +113,15 @@ public class Main {
                     if(count%2==0){
                         testDeadLock(1L,2L);
                     }else{
-                        testDeadLock(2L,1L);
+//                        testDeadLock(2L,1L);
                     }
 
                 }
             };
             list.add(executorService.submit(runnable));
         }
+
+        TableLoader.getTableInstance(UserTable.class).select(3L);
 
         for(Future future : list){
             try {
@@ -137,7 +139,7 @@ public class Main {
 
         /**
          * 当取出数据为空的时候插入数据
-         * */
+         *
         new Procedure() {
             @Override
             protected boolean process() {
@@ -160,7 +162,7 @@ public class Main {
                 System.out.println(userEntity);
                 return true;
             }
-        }.submit();
+        }.submit();*/
 
 
 
