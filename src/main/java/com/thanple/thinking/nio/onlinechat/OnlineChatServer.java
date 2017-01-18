@@ -15,6 +15,15 @@ import java.util.Set;
 
 /**
  * Created by Thanple on 2017/1/18.
+ *
+ * NIO Server端步骤:
+ * Selector.open()->ServerSocketChannel.open()
+ * ->serverChannel.register(selector)事件得到SelectionKey
+ * ->轮训调度selector得到的SelectionKey处理不同的事件(Accept,Read,Connection等)
+ *
+ * SelectionKey是什么？ServerSocketChannel注册事件后返回SelectionKey，可以注册Accept,Read,Connection等
+ * SelectionKey中可以获取SocketChannel，即持有客户端的Socket实例的同道
+ * 每个SelectionKey都可以attach一个Handle接口，然后自定义处理
  */
 public class OnlineChatServer {
 
@@ -34,7 +43,8 @@ public class OnlineChatServer {
         serverChannel.configureBlocking(false);
         serverChannel.socket().bind(new InetSocketAddress(PORT));
         this.selector = Selector.open();
-        serverChannel.register(selector, SelectionKey.OP_ACCEPT);
+        SelectionKey sk = serverChannel.register(selector, SelectionKey.OP_ACCEPT);
+        //selectionKey.attach(new Handle...);   //可以在这里attach
 
         System.out.println("Server is started at "+PORT);
 
@@ -104,6 +114,14 @@ public class OnlineChatServer {
             else if(arrayContent != null && arrayContent.length >1){    //注册完了，发送消息
                 String writeTo = arrayContent[0];
                 String message = content.substring(writeTo.length()+USER_CONTENT_SPILIT.length());
+
+
+                try {
+                    Thread.sleep(15000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
                 this.sendToAnotherSocketChannel(socketChannel,writeTo,message);
             }
         }
