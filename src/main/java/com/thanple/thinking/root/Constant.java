@@ -13,7 +13,7 @@ public class Constant {
         public static final String ROOT_PATH = System.getProperty("user.dir");
 
         //运行class目录
-        ///F:/IdeaProjects/ThinkingInWorld/target/classes/
+        // /F:/IdeaProjects/ThinkingInWorld/target/classes/
         public static final String RUN_CLASS_PATH = Thread.currentThread().getContextClassLoader().getResource("").getPath();
 
         //tools目录
@@ -22,6 +22,9 @@ public class Constant {
 
         //src目录下
         public static final String SRC_ROOT_PATH = ROOT_PATH + "/src/main/java";
+
+        //resource目录下
+        public static final String RESOURCE_ROOT_PATH = ROOT_PATH + "/src/main/resources";
     }
 
 }
