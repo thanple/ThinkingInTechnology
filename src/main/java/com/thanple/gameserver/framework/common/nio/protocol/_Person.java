@@ -3,8 +3,8 @@
 
 package com.thanple.gameserver.framework.common.nio.protocol;
 
-public final class PersonProtos {
-  private PersonProtos() {}
+public final class _Person {
+  private _Person() {}
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
@@ -19,7 +19,7 @@ public final class PersonProtos {
     /**
      * <code>required string name = 1;</code>
      */
-    String getName();
+    java.lang.String getName();
     /**
      * <code>required string name = 1;</code>
      */
@@ -42,7 +42,7 @@ public final class PersonProtos {
     /**
      * <code>optional string email = 3;</code>
      */
-    String getEmail();
+    java.lang.String getEmail();
     /**
      * <code>optional string email = 3;</code>
      */
@@ -52,12 +52,12 @@ public final class PersonProtos {
     /**
      * <code>repeated .Person.PhoneNumber phone = 4;</code>
      */
-    java.util.List<Person.PhoneNumber>
+    java.util.List<com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber> 
         getPhoneList();
     /**
      * <code>repeated .Person.PhoneNumber phone = 4;</code>
      */
-    Person.PhoneNumber getPhone(int index);
+    com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber getPhone(int index);
     /**
      * <code>repeated .Person.PhoneNumber phone = 4;</code>
      */
@@ -65,13 +65,13 @@ public final class PersonProtos {
     /**
      * <code>repeated .Person.PhoneNumber phone = 4;</code>
      */
-    java.util.List<? extends Person.PhoneNumberOrBuilder>
+    java.util.List<? extends com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumberOrBuilder> 
         getPhoneOrBuilderList();
     /**
      * <code>repeated .Person.PhoneNumber phone = 4;</code>
      */
-    Person.PhoneNumberOrBuilder getPhoneOrBuilder(
-            int index);
+    com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumberOrBuilder getPhoneOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code Person}
@@ -97,7 +97,7 @@ public final class PersonProtos {
     }
 
     private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @Override
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
         getUnknownFields() {
       return this.unknownFields;
@@ -144,10 +144,10 @@ public final class PersonProtos {
             }
             case 34: {
               if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
-                phone_ = new java.util.ArrayList<PhoneNumber>();
+                phone_ = new java.util.ArrayList<com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber>();
                 mutable_bitField0_ |= 0x00000008;
               }
-              phone_.add(input.readMessage(PhoneNumber.PARSER, extensionRegistry));
+              phone_.add(input.readMessage(com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber.PARSER, extensionRegistry));
               break;
             }
           }
@@ -167,14 +167,14 @@ public final class PersonProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return PersonProtos.internal_static_Person_descriptor;
+      return com.thanple.gameserver.framework.common.nio.protocol._Person.internal_static_Person_descriptor;
     }
 
-    protected FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return PersonProtos.internal_static_Person_fieldAccessorTable
+      return com.thanple.gameserver.framework.common.nio.protocol._Person.internal_static_Person_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              Person.class, Builder.class);
+              com.thanple.gameserver.framework.common.nio.protocol._Person.Person.class, com.thanple.gameserver.framework.common.nio.protocol._Person.Person.Builder.class);
     }
 
     public static com.google.protobuf.Parser<Person> PARSER =
@@ -187,7 +187,7 @@ public final class PersonProtos {
       }
     };
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Parser<Person> getParserForType() {
       return PARSER;
     }
@@ -258,7 +258,7 @@ public final class PersonProtos {
       }
       public static final com.google.protobuf.Descriptors.EnumDescriptor
           getDescriptor() {
-        return Person.getDescriptor().getEnumTypes().get(0);
+        return com.thanple.gameserver.framework.common.nio.protocol._Person.Person.getDescriptor().getEnumTypes().get(0);
       }
 
       private static final PhoneType[] VALUES = values();
@@ -266,7 +266,7 @@ public final class PersonProtos {
       public static PhoneType valueOf(
           com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
         if (desc.getType() != getDescriptor()) {
-          throw new IllegalArgumentException(
+          throw new java.lang.IllegalArgumentException(
             "EnumValueDescriptor is not for this type.");
         }
         return VALUES[desc.getIndex()];
@@ -294,7 +294,7 @@ public final class PersonProtos {
       /**
        * <code>required string number = 1;</code>
        */
-      String getNumber();
+      java.lang.String getNumber();
       /**
        * <code>required string number = 1;</code>
        */
@@ -308,7 +308,7 @@ public final class PersonProtos {
       /**
        * <code>optional .Person.PhoneType type = 2 [default = HOME];</code>
        */
-      PhoneType getType();
+      com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneType getType();
     }
     /**
      * Protobuf type {@code Person.PhoneNumber}
@@ -334,7 +334,7 @@ public final class PersonProtos {
       }
 
       private final com.google.protobuf.UnknownFieldSet unknownFields;
-      @Override
+      @java.lang.Override
       public final com.google.protobuf.UnknownFieldSet
           getUnknownFields() {
         return this.unknownFields;
@@ -370,7 +370,7 @@ public final class PersonProtos {
               }
               case 16: {
                 int rawValue = input.readEnum();
-                PhoneType value = PhoneType.valueOf(rawValue);
+                com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneType value = com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneType.valueOf(rawValue);
                 if (value == null) {
                   unknownFields.mergeVarintField(2, rawValue);
                 } else {
@@ -393,14 +393,14 @@ public final class PersonProtos {
       }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return PersonProtos.internal_static_Person_PhoneNumber_descriptor;
+        return com.thanple.gameserver.framework.common.nio.protocol._Person.internal_static_Person_PhoneNumber_descriptor;
       }
 
-      protected FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return PersonProtos.internal_static_Person_PhoneNumber_fieldAccessorTable
+        return com.thanple.gameserver.framework.common.nio.protocol._Person.internal_static_Person_PhoneNumber_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                PhoneNumber.class, Builder.class);
+                com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber.class, com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber.Builder.class);
       }
 
       public static com.google.protobuf.Parser<PhoneNumber> PARSER =
@@ -413,14 +413,14 @@ public final class PersonProtos {
         }
       };
 
-      @Override
+      @java.lang.Override
       public com.google.protobuf.Parser<PhoneNumber> getParserForType() {
         return PARSER;
       }
 
       private int bitField0_;
       public static final int NUMBER_FIELD_NUMBER = 1;
-      private Object number_;
+      private java.lang.Object number_;
       /**
        * <code>required string number = 1;</code>
        */
@@ -430,14 +430,14 @@ public final class PersonProtos {
       /**
        * <code>required string number = 1;</code>
        */
-      public String getNumber() {
-        Object ref = number_;
-        if (ref instanceof String) {
-          return (String) ref;
+      public java.lang.String getNumber() {
+        java.lang.Object ref = number_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
         } else {
           com.google.protobuf.ByteString bs = 
               (com.google.protobuf.ByteString) ref;
-          String s = bs.toStringUtf8();
+          java.lang.String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
             number_ = s;
           }
@@ -449,11 +449,11 @@ public final class PersonProtos {
        */
       public com.google.protobuf.ByteString
           getNumberBytes() {
-        Object ref = number_;
-        if (ref instanceof String) {
+        java.lang.Object ref = number_;
+        if (ref instanceof java.lang.String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (String) ref);
+                  (java.lang.String) ref);
           number_ = b;
           return b;
         } else {
@@ -462,7 +462,7 @@ public final class PersonProtos {
       }
 
       public static final int TYPE_FIELD_NUMBER = 2;
-      private PhoneType type_;
+      private com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneType type_;
       /**
        * <code>optional .Person.PhoneType type = 2 [default = HOME];</code>
        */
@@ -472,13 +472,13 @@ public final class PersonProtos {
       /**
        * <code>optional .Person.PhoneType type = 2 [default = HOME];</code>
        */
-      public PhoneType getType() {
+      public com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneType getType() {
         return type_;
       }
 
       private void initFields() {
         number_ = "";
-        type_ = PhoneType.HOME;
+        type_ = com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneType.HOME;
       }
       private byte memoizedIsInitialized = -1;
       public final boolean isInitialized() {
@@ -526,59 +526,59 @@ public final class PersonProtos {
       }
 
       private static final long serialVersionUID = 0L;
-      @Override
-      protected Object writeReplace()
+      @java.lang.Override
+      protected java.lang.Object writeReplace()
           throws java.io.ObjectStreamException {
         return super.writeReplace();
       }
 
-      public static PhoneNumber parseFrom(
+      public static com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static PhoneNumber parseFrom(
+      public static com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static PhoneNumber parseFrom(byte[] data)
+      public static com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static PhoneNumber parseFrom(
+      public static com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static PhoneNumber parseFrom(java.io.InputStream input)
+      public static com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return PARSER.parseFrom(input);
       }
-      public static PhoneNumber parseFrom(
+      public static com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return PARSER.parseFrom(input, extensionRegistry);
       }
-      public static PhoneNumber parseDelimitedFrom(java.io.InputStream input)
+      public static com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return PARSER.parseDelimitedFrom(input);
       }
-      public static PhoneNumber parseDelimitedFrom(
+      public static com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return PARSER.parseDelimitedFrom(input, extensionRegistry);
       }
-      public static PhoneNumber parseFrom(
+      public static com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return PARSER.parseFrom(input);
       }
-      public static PhoneNumber parseFrom(
+      public static com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -587,14 +587,14 @@ public final class PersonProtos {
 
       public static Builder newBuilder() { return Builder.create(); }
       public Builder newBuilderForType() { return newBuilder(); }
-      public static Builder newBuilder(PhoneNumber prototype) {
+      public static Builder newBuilder(com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber prototype) {
         return newBuilder().mergeFrom(prototype);
       }
       public Builder toBuilder() { return newBuilder(this); }
 
-      @Override
+      @java.lang.Override
       protected Builder newBuilderForType(
-          BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         Builder builder = new Builder(parent);
         return builder;
       }
@@ -604,26 +604,26 @@ public final class PersonProtos {
       public static final class Builder extends
           com.google.protobuf.GeneratedMessage.Builder<Builder> implements
           // @@protoc_insertion_point(builder_implements:Person.PhoneNumber)
-          PhoneNumberOrBuilder {
+          com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumberOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-          return PersonProtos.internal_static_Person_PhoneNumber_descriptor;
+          return com.thanple.gameserver.framework.common.nio.protocol._Person.internal_static_Person_PhoneNumber_descriptor;
         }
 
-        protected FieldAccessorTable
+        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return PersonProtos.internal_static_Person_PhoneNumber_fieldAccessorTable
+          return com.thanple.gameserver.framework.common.nio.protocol._Person.internal_static_Person_PhoneNumber_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
-                  PhoneNumber.class, Builder.class);
+                  com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber.class, com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber.Builder.class);
         }
 
-        // Construct using com.thanple.thinking.protobuf.PersonProtos.Person.PhoneNumber.newBuilder()
+        // Construct using com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber.newBuilder()
         private Builder() {
           maybeForceBuilderInitialization();
         }
 
         private Builder(
-            BuilderParent parent) {
+            com.google.protobuf.GeneratedMessage.BuilderParent parent) {
           super(parent);
           maybeForceBuilderInitialization();
         }
@@ -639,7 +639,7 @@ public final class PersonProtos {
           super.clear();
           number_ = "";
           bitField0_ = (bitField0_ & ~0x00000001);
-          type_ = PhoneType.HOME;
+          type_ = com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneType.HOME;
           bitField0_ = (bitField0_ & ~0x00000002);
           return this;
         }
@@ -650,23 +650,23 @@ public final class PersonProtos {
 
         public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-          return PersonProtos.internal_static_Person_PhoneNumber_descriptor;
+          return com.thanple.gameserver.framework.common.nio.protocol._Person.internal_static_Person_PhoneNumber_descriptor;
         }
 
-        public PhoneNumber getDefaultInstanceForType() {
-          return PhoneNumber.getDefaultInstance();
+        public com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber getDefaultInstanceForType() {
+          return com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber.getDefaultInstance();
         }
 
-        public PhoneNumber build() {
-          PhoneNumber result = buildPartial();
+        public com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber build() {
+          com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber result = buildPartial();
           if (!result.isInitialized()) {
             throw newUninitializedMessageException(result);
           }
           return result;
         }
 
-        public PhoneNumber buildPartial() {
-          PhoneNumber result = new PhoneNumber(this);
+        public com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber buildPartial() {
+          com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber result = new com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber(this);
           int from_bitField0_ = bitField0_;
           int to_bitField0_ = 0;
           if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -683,16 +683,16 @@ public final class PersonProtos {
         }
 
         public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof PhoneNumber) {
-            return mergeFrom((PhoneNumber)other);
+          if (other instanceof com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber) {
+            return mergeFrom((com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber)other);
           } else {
             super.mergeFrom(other);
             return this;
           }
         }
 
-        public Builder mergeFrom(PhoneNumber other) {
-          if (other == PhoneNumber.getDefaultInstance()) return this;
+        public Builder mergeFrom(com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber other) {
+          if (other == com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber.getDefaultInstance()) return this;
           if (other.hasNumber()) {
             bitField0_ |= 0x00000001;
             number_ = other.number_;
@@ -717,11 +717,11 @@ public final class PersonProtos {
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
-          PhoneNumber parsedMessage = null;
+          com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber parsedMessage = null;
           try {
             parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (PhoneNumber) e.getUnfinishedMessage();
+            parsedMessage = (com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber) e.getUnfinishedMessage();
             throw e;
           } finally {
             if (parsedMessage != null) {
@@ -732,7 +732,7 @@ public final class PersonProtos {
         }
         private int bitField0_;
 
-        private Object number_ = "";
+        private java.lang.Object number_ = "";
         /**
          * <code>required string number = 1;</code>
          */
@@ -742,18 +742,18 @@ public final class PersonProtos {
         /**
          * <code>required string number = 1;</code>
          */
-        public String getNumber() {
-          Object ref = number_;
-          if (!(ref instanceof String)) {
+        public java.lang.String getNumber() {
+          java.lang.Object ref = number_;
+          if (!(ref instanceof java.lang.String)) {
             com.google.protobuf.ByteString bs =
                 (com.google.protobuf.ByteString) ref;
-            String s = bs.toStringUtf8();
+            java.lang.String s = bs.toStringUtf8();
             if (bs.isValidUtf8()) {
               number_ = s;
             }
             return s;
           } else {
-            return (String) ref;
+            return (java.lang.String) ref;
           }
         }
         /**
@@ -761,11 +761,11 @@ public final class PersonProtos {
          */
         public com.google.protobuf.ByteString
             getNumberBytes() {
-          Object ref = number_;
+          java.lang.Object ref = number_;
           if (ref instanceof String) {
             com.google.protobuf.ByteString b = 
                 com.google.protobuf.ByteString.copyFromUtf8(
-                    (String) ref);
+                    (java.lang.String) ref);
             number_ = b;
             return b;
           } else {
@@ -776,7 +776,7 @@ public final class PersonProtos {
          * <code>required string number = 1;</code>
          */
         public Builder setNumber(
-            String value) {
+            java.lang.String value) {
           if (value == null) {
     throw new NullPointerException();
   }
@@ -808,7 +808,7 @@ public final class PersonProtos {
           return this;
         }
 
-        private PhoneType type_ = PhoneType.HOME;
+        private com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneType type_ = com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneType.HOME;
         /**
          * <code>optional .Person.PhoneType type = 2 [default = HOME];</code>
          */
@@ -818,13 +818,13 @@ public final class PersonProtos {
         /**
          * <code>optional .Person.PhoneType type = 2 [default = HOME];</code>
          */
-        public PhoneType getType() {
+        public com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneType getType() {
           return type_;
         }
         /**
          * <code>optional .Person.PhoneType type = 2 [default = HOME];</code>
          */
-        public Builder setType(PhoneType value) {
+        public Builder setType(com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneType value) {
           if (value == null) {
             throw new NullPointerException();
           }
@@ -838,7 +838,7 @@ public final class PersonProtos {
          */
         public Builder clearType() {
           bitField0_ = (bitField0_ & ~0x00000002);
-          type_ = PhoneType.HOME;
+          type_ = com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneType.HOME;
           onChanged();
           return this;
         }
@@ -856,7 +856,7 @@ public final class PersonProtos {
 
     private int bitField0_;
     public static final int NAME_FIELD_NUMBER = 1;
-    private Object name_;
+    private java.lang.Object name_;
     /**
      * <code>required string name = 1;</code>
      */
@@ -866,14 +866,14 @@ public final class PersonProtos {
     /**
      * <code>required string name = 1;</code>
      */
-    public String getName() {
-      Object ref = name_;
-      if (ref instanceof String) {
-        return (String) ref;
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
+        java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
           name_ = s;
         }
@@ -885,11 +885,11 @@ public final class PersonProtos {
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
-      Object ref = name_;
-      if (ref instanceof String) {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
-                (String) ref);
+                (java.lang.String) ref);
         name_ = b;
         return b;
       } else {
@@ -913,7 +913,7 @@ public final class PersonProtos {
     }
 
     public static final int EMAIL_FIELD_NUMBER = 3;
-    private Object email_;
+    private java.lang.Object email_;
     /**
      * <code>optional string email = 3;</code>
      */
@@ -923,14 +923,14 @@ public final class PersonProtos {
     /**
      * <code>optional string email = 3;</code>
      */
-    public String getEmail() {
-      Object ref = email_;
-      if (ref instanceof String) {
-        return (String) ref;
+    public java.lang.String getEmail() {
+      java.lang.Object ref = email_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
+        java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
           email_ = s;
         }
@@ -942,11 +942,11 @@ public final class PersonProtos {
      */
     public com.google.protobuf.ByteString
         getEmailBytes() {
-      Object ref = email_;
-      if (ref instanceof String) {
+      java.lang.Object ref = email_;
+      if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
-                (String) ref);
+                (java.lang.String) ref);
         email_ = b;
         return b;
       } else {
@@ -955,17 +955,17 @@ public final class PersonProtos {
     }
 
     public static final int PHONE_FIELD_NUMBER = 4;
-    private java.util.List<PhoneNumber> phone_;
+    private java.util.List<com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber> phone_;
     /**
      * <code>repeated .Person.PhoneNumber phone = 4;</code>
      */
-    public java.util.List<PhoneNumber> getPhoneList() {
+    public java.util.List<com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber> getPhoneList() {
       return phone_;
     }
     /**
      * <code>repeated .Person.PhoneNumber phone = 4;</code>
      */
-    public java.util.List<? extends PhoneNumberOrBuilder>
+    public java.util.List<? extends com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumberOrBuilder> 
         getPhoneOrBuilderList() {
       return phone_;
     }
@@ -978,13 +978,13 @@ public final class PersonProtos {
     /**
      * <code>repeated .Person.PhoneNumber phone = 4;</code>
      */
-    public PhoneNumber getPhone(int index) {
+    public com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber getPhone(int index) {
       return phone_.get(index);
     }
     /**
      * <code>repeated .Person.PhoneNumber phone = 4;</code>
      */
-    public PhoneNumberOrBuilder getPhoneOrBuilder(
+    public com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumberOrBuilder getPhoneOrBuilder(
         int index) {
       return phone_.get(index);
     }
@@ -1065,59 +1065,59 @@ public final class PersonProtos {
     }
 
     private static final long serialVersionUID = 0L;
-    @Override
-    protected Object writeReplace()
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
 
-    public static Person parseFrom(
+    public static com.thanple.gameserver.framework.common.nio.protocol._Person.Person parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Person parseFrom(
+    public static com.thanple.gameserver.framework.common.nio.protocol._Person.Person parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Person parseFrom(byte[] data)
+    public static com.thanple.gameserver.framework.common.nio.protocol._Person.Person parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Person parseFrom(
+    public static com.thanple.gameserver.framework.common.nio.protocol._Person.Person parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Person parseFrom(java.io.InputStream input)
+    public static com.thanple.gameserver.framework.common.nio.protocol._Person.Person parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static Person parseFrom(
+    public static com.thanple.gameserver.framework.common.nio.protocol._Person.Person parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static Person parseDelimitedFrom(java.io.InputStream input)
+    public static com.thanple.gameserver.framework.common.nio.protocol._Person.Person parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static Person parseDelimitedFrom(
+    public static com.thanple.gameserver.framework.common.nio.protocol._Person.Person parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static Person parseFrom(
+    public static com.thanple.gameserver.framework.common.nio.protocol._Person.Person parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static Person parseFrom(
+    public static com.thanple.gameserver.framework.common.nio.protocol._Person.Person parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1126,14 +1126,14 @@ public final class PersonProtos {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(Person prototype) {
+    public static Builder newBuilder(com.thanple.gameserver.framework.common.nio.protocol._Person.Person prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
 
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -1143,26 +1143,26 @@ public final class PersonProtos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:Person)
-        PersonOrBuilder {
+        com.thanple.gameserver.framework.common.nio.protocol._Person.PersonOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return PersonProtos.internal_static_Person_descriptor;
+        return com.thanple.gameserver.framework.common.nio.protocol._Person.internal_static_Person_descriptor;
       }
 
-      protected FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return PersonProtos.internal_static_Person_fieldAccessorTable
+        return com.thanple.gameserver.framework.common.nio.protocol._Person.internal_static_Person_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                Person.class, Builder.class);
+                com.thanple.gameserver.framework.common.nio.protocol._Person.Person.class, com.thanple.gameserver.framework.common.nio.protocol._Person.Person.Builder.class);
       }
 
-      // Construct using com.thanple.thinking.protobuf.PersonProtos.Person.newBuilder()
+      // Construct using com.thanple.gameserver.framework.common.nio.protocol._Person.Person.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
 
       private Builder(
-          BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -1198,23 +1198,23 @@ public final class PersonProtos {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return PersonProtos.internal_static_Person_descriptor;
+        return com.thanple.gameserver.framework.common.nio.protocol._Person.internal_static_Person_descriptor;
       }
 
-      public Person getDefaultInstanceForType() {
-        return Person.getDefaultInstance();
+      public com.thanple.gameserver.framework.common.nio.protocol._Person.Person getDefaultInstanceForType() {
+        return com.thanple.gameserver.framework.common.nio.protocol._Person.Person.getDefaultInstance();
       }
 
-      public Person build() {
-        Person result = buildPartial();
+      public com.thanple.gameserver.framework.common.nio.protocol._Person.Person build() {
+        com.thanple.gameserver.framework.common.nio.protocol._Person.Person result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public Person buildPartial() {
-        Person result = new Person(this);
+      public com.thanple.gameserver.framework.common.nio.protocol._Person.Person buildPartial() {
+        com.thanple.gameserver.framework.common.nio.protocol._Person.Person result = new com.thanple.gameserver.framework.common.nio.protocol._Person.Person(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -1244,16 +1244,16 @@ public final class PersonProtos {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof Person) {
-          return mergeFrom((Person)other);
+        if (other instanceof com.thanple.gameserver.framework.common.nio.protocol._Person.Person) {
+          return mergeFrom((com.thanple.gameserver.framework.common.nio.protocol._Person.Person)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(Person other) {
-        if (other == Person.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.thanple.gameserver.framework.common.nio.protocol._Person.Person other) {
+        if (other == com.thanple.gameserver.framework.common.nio.protocol._Person.Person.getDefaultInstance()) return this;
         if (other.hasName()) {
           bitField0_ |= 0x00000001;
           name_ = other.name_;
@@ -1319,11 +1319,11 @@ public final class PersonProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        Person parsedMessage = null;
+        com.thanple.gameserver.framework.common.nio.protocol._Person.Person parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (Person) e.getUnfinishedMessage();
+          parsedMessage = (com.thanple.gameserver.framework.common.nio.protocol._Person.Person) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -1334,7 +1334,7 @@ public final class PersonProtos {
       }
       private int bitField0_;
 
-      private Object name_ = "";
+      private java.lang.Object name_ = "";
       /**
        * <code>required string name = 1;</code>
        */
@@ -1344,18 +1344,18 @@ public final class PersonProtos {
       /**
        * <code>required string name = 1;</code>
        */
-      public String getName() {
-        Object ref = name_;
-        if (!(ref instanceof String)) {
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
-          String s = bs.toStringUtf8();
+          java.lang.String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
             name_ = s;
           }
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
       /**
@@ -1363,11 +1363,11 @@ public final class PersonProtos {
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
-        Object ref = name_;
+        java.lang.Object ref = name_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (String) ref);
+                  (java.lang.String) ref);
           name_ = b;
           return b;
         } else {
@@ -1378,7 +1378,7 @@ public final class PersonProtos {
        * <code>required string name = 1;</code>
        */
       public Builder setName(
-          String value) {
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -1442,7 +1442,7 @@ public final class PersonProtos {
         return this;
       }
 
-      private Object email_ = "";
+      private java.lang.Object email_ = "";
       /**
        * <code>optional string email = 3;</code>
        */
@@ -1452,18 +1452,18 @@ public final class PersonProtos {
       /**
        * <code>optional string email = 3;</code>
        */
-      public String getEmail() {
-        Object ref = email_;
-        if (!(ref instanceof String)) {
+      public java.lang.String getEmail() {
+        java.lang.Object ref = email_;
+        if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
-          String s = bs.toStringUtf8();
+          java.lang.String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
             email_ = s;
           }
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
       /**
@@ -1471,11 +1471,11 @@ public final class PersonProtos {
        */
       public com.google.protobuf.ByteString
           getEmailBytes() {
-        Object ref = email_;
+        java.lang.Object ref = email_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (String) ref);
+                  (java.lang.String) ref);
           email_ = b;
           return b;
         } else {
@@ -1486,7 +1486,7 @@ public final class PersonProtos {
        * <code>optional string email = 3;</code>
        */
       public Builder setEmail(
-          String value) {
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -1518,22 +1518,22 @@ public final class PersonProtos {
         return this;
       }
 
-      private java.util.List<PhoneNumber> phone_ =
+      private java.util.List<com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber> phone_ =
         java.util.Collections.emptyList();
       private void ensurePhoneIsMutable() {
         if (!((bitField0_ & 0x00000008) == 0x00000008)) {
-          phone_ = new java.util.ArrayList<PhoneNumber>(phone_);
+          phone_ = new java.util.ArrayList<com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber>(phone_);
           bitField0_ |= 0x00000008;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          PhoneNumber, PhoneNumber.Builder, PhoneNumberOrBuilder> phoneBuilder_;
+          com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber, com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber.Builder, com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumberOrBuilder> phoneBuilder_;
 
       /**
        * <code>repeated .Person.PhoneNumber phone = 4;</code>
        */
-      public java.util.List<PhoneNumber> getPhoneList() {
+      public java.util.List<com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber> getPhoneList() {
         if (phoneBuilder_ == null) {
           return java.util.Collections.unmodifiableList(phone_);
         } else {
@@ -1553,7 +1553,7 @@ public final class PersonProtos {
       /**
        * <code>repeated .Person.PhoneNumber phone = 4;</code>
        */
-      public PhoneNumber getPhone(int index) {
+      public com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber getPhone(int index) {
         if (phoneBuilder_ == null) {
           return phone_.get(index);
         } else {
@@ -1564,7 +1564,7 @@ public final class PersonProtos {
        * <code>repeated .Person.PhoneNumber phone = 4;</code>
        */
       public Builder setPhone(
-          int index, PhoneNumber value) {
+          int index, com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber value) {
         if (phoneBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -1581,7 +1581,7 @@ public final class PersonProtos {
        * <code>repeated .Person.PhoneNumber phone = 4;</code>
        */
       public Builder setPhone(
-          int index, PhoneNumber.Builder builderForValue) {
+          int index, com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber.Builder builderForValue) {
         if (phoneBuilder_ == null) {
           ensurePhoneIsMutable();
           phone_.set(index, builderForValue.build());
@@ -1594,7 +1594,7 @@ public final class PersonProtos {
       /**
        * <code>repeated .Person.PhoneNumber phone = 4;</code>
        */
-      public Builder addPhone(PhoneNumber value) {
+      public Builder addPhone(com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber value) {
         if (phoneBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -1611,7 +1611,7 @@ public final class PersonProtos {
        * <code>repeated .Person.PhoneNumber phone = 4;</code>
        */
       public Builder addPhone(
-          int index, PhoneNumber value) {
+          int index, com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber value) {
         if (phoneBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -1628,7 +1628,7 @@ public final class PersonProtos {
        * <code>repeated .Person.PhoneNumber phone = 4;</code>
        */
       public Builder addPhone(
-          PhoneNumber.Builder builderForValue) {
+          com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber.Builder builderForValue) {
         if (phoneBuilder_ == null) {
           ensurePhoneIsMutable();
           phone_.add(builderForValue.build());
@@ -1642,7 +1642,7 @@ public final class PersonProtos {
        * <code>repeated .Person.PhoneNumber phone = 4;</code>
        */
       public Builder addPhone(
-          int index, PhoneNumber.Builder builderForValue) {
+          int index, com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber.Builder builderForValue) {
         if (phoneBuilder_ == null) {
           ensurePhoneIsMutable();
           phone_.add(index, builderForValue.build());
@@ -1656,7 +1656,7 @@ public final class PersonProtos {
        * <code>repeated .Person.PhoneNumber phone = 4;</code>
        */
       public Builder addAllPhone(
-          Iterable<? extends PhoneNumber> values) {
+          java.lang.Iterable<? extends com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber> values) {
         if (phoneBuilder_ == null) {
           ensurePhoneIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -1696,14 +1696,14 @@ public final class PersonProtos {
       /**
        * <code>repeated .Person.PhoneNumber phone = 4;</code>
        */
-      public PhoneNumber.Builder getPhoneBuilder(
+      public com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber.Builder getPhoneBuilder(
           int index) {
         return getPhoneFieldBuilder().getBuilder(index);
       }
       /**
        * <code>repeated .Person.PhoneNumber phone = 4;</code>
        */
-      public PhoneNumberOrBuilder getPhoneOrBuilder(
+      public com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumberOrBuilder getPhoneOrBuilder(
           int index) {
         if (phoneBuilder_ == null) {
           return phone_.get(index);  } else {
@@ -1713,7 +1713,7 @@ public final class PersonProtos {
       /**
        * <code>repeated .Person.PhoneNumber phone = 4;</code>
        */
-      public java.util.List<? extends PhoneNumberOrBuilder>
+      public java.util.List<? extends com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumberOrBuilder> 
            getPhoneOrBuilderList() {
         if (phoneBuilder_ != null) {
           return phoneBuilder_.getMessageOrBuilderList();
@@ -1724,31 +1724,31 @@ public final class PersonProtos {
       /**
        * <code>repeated .Person.PhoneNumber phone = 4;</code>
        */
-      public PhoneNumber.Builder addPhoneBuilder() {
+      public com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber.Builder addPhoneBuilder() {
         return getPhoneFieldBuilder().addBuilder(
-            PhoneNumber.getDefaultInstance());
+            com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber.getDefaultInstance());
       }
       /**
        * <code>repeated .Person.PhoneNumber phone = 4;</code>
        */
-      public PhoneNumber.Builder addPhoneBuilder(
+      public com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber.Builder addPhoneBuilder(
           int index) {
         return getPhoneFieldBuilder().addBuilder(
-            index, PhoneNumber.getDefaultInstance());
+            index, com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber.getDefaultInstance());
       }
       /**
        * <code>repeated .Person.PhoneNumber phone = 4;</code>
        */
-      public java.util.List<PhoneNumber.Builder>
+      public java.util.List<com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber.Builder> 
            getPhoneBuilderList() {
         return getPhoneFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          PhoneNumber, PhoneNumber.Builder, PhoneNumberOrBuilder>
+          com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber, com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber.Builder, com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumberOrBuilder> 
           getPhoneFieldBuilder() {
         if (phoneBuilder_ == null) {
           phoneBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              PhoneNumber, PhoneNumber.Builder, PhoneNumberOrBuilder>(
+              com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber, com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumber.Builder, com.thanple.gameserver.framework.common.nio.protocol._Person.Person.PhoneNumberOrBuilder>(
                   phone_,
                   ((bitField0_ & 0x00000008) == 0x00000008),
                   getParentForChildren(),
@@ -1787,14 +1787,15 @@ public final class PersonProtos {
   private static com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
-    String[] descriptorData = {
+    java.lang.String[] descriptorData = {
       "\n\014Person.proto\"\310\001\n\006Person\022\014\n\004name\030\001 \002(\t\022" +
       "\n\n\002id\030\002 \002(\005\022\r\n\005email\030\003 \001(\t\022\"\n\005phone\030\004 \003(" +
       "\0132\023.Person.PhoneNumber\032D\n\013PhoneNumber\022\016\n" +
       "\006number\030\001 \002(\t\022%\n\004type\030\002 \001(\0162\021.Person.Pho" +
       "neType:\004HOME\"+\n\tPhoneType\022\n\n\006MOBILE\020\000\022\010\n" +
-      "\004HOME\020\001\022\010\n\004WORK\020\002B-\n\035com.thanple.thinkin" +
-      "g.protobufB\014PersonProtos"
+      "\004HOME\020\001\022\010\n\004WORK\020\002B?\n4com.thanple.gameser" +
+      "ver.framework.common.nio.protocolB\007_Pers" +
+      "on"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -1813,13 +1814,13 @@ public final class PersonProtos {
     internal_static_Person_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_Person_descriptor,
-        new String[] { "Name", "Id", "Email", "Phone", });
+        new java.lang.String[] { "Name", "Id", "Email", "Phone", });
     internal_static_Person_PhoneNumber_descriptor =
       internal_static_Person_descriptor.getNestedTypes().get(0);
     internal_static_Person_PhoneNumber_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_Person_PhoneNumber_descriptor,
-        new String[] { "Number", "Type", });
+        new java.lang.String[] { "Number", "Type", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

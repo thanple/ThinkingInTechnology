@@ -1,8 +1,9 @@
 package com.thanple.gameserver.framework.app;
 
 import com.google.protobuf.MessageLite;
-import com.thanple.gameserver.framework.common.nio.protocol.GameServerCMsg;
-import com.thanple.gameserver.framework.common.nio.protocol.PersonProtos;
+import com.thanple.gameserver.framework.common.nio.protocol._GameServerCMsg;
+import com.thanple.gameserver.framework.common.nio.protocol._GameServerSMsg;
+import com.thanple.gameserver.framework.common.nio.protocol._Person;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -33,7 +34,10 @@ public class NIOClientDemo1 {
         @Override
         public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
 
-            PersonProtos.Person person = (PersonProtos.Person)msg;
+            _GameServerSMsg.GameServerSMsg serverSMsg = (_GameServerSMsg.GameServerSMsg)msg;
+
+            _Person.Person person = _Person.Person.parseFrom(serverSMsg.getMsg());
+
             System.out.println(person);
         }
 
@@ -45,14 +49,14 @@ public class NIOClientDemo1 {
 
         public MessageLite build() {
 
-            GameServerCMsg.ClientMsg.Builder clientMsgBuilder = GameServerCMsg.ClientMsg.newBuilder();
+            _GameServerCMsg.GameServerCMsg.Builder clientMsgBuilder = _GameServerCMsg.GameServerCMsg.newBuilder();
             clientMsgBuilder.setId(1);
 
 
-            PersonProtos.Person.Builder personBuilder = PersonProtos.Person.newBuilder();
+            _Person.Person.Builder personBuilder = _Person.Person.newBuilder();
             personBuilder.setEmail("lisi@gmail.com");
             personBuilder.setId(1000);
-            PersonProtos.Person.PhoneNumber.Builder phone = PersonProtos.Person.PhoneNumber.newBuilder();
+            _Person.Person.PhoneNumber.Builder phone = _Person.Person.PhoneNumber.newBuilder();
             phone.setNumber("18610000000");
 
             personBuilder.setName("李四");
@@ -77,7 +81,7 @@ public class NIOClientDemo1 {
                         protected void initChannel(SocketChannel ch) throws Exception {
                             System.out.println("initChannel");
                             ch.pipeline().addLast(new ProtobufVarint32FrameDecoder())
-                                    .addLast(new ProtobufDecoder(PersonProtos.Person.getDefaultInstance()))
+                                    .addLast(new ProtobufDecoder(_GameServerSMsg.GameServerSMsg.getDefaultInstance()))
                                     .addLast(new ProtobufVarint32LengthFieldPrepender())
                                     .addLast(new ProtobufEncoder())
                                     .addLast(new ProtobufClientHandler());
