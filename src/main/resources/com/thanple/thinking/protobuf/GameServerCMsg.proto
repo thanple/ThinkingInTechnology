@@ -1,0 +1,7 @@
+option java_package = "com.thanple.gameserver.framework.common.nio.protocol";
+option java_outer_classname="GameServerCMsg";
+
+message ClientMsg {
+  required int32 id = 1;
+  required bytes msg = 2;
+}

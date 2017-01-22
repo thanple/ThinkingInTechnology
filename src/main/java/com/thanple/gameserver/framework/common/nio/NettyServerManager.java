@@ -1,5 +1,6 @@
 package com.thanple.gameserver.framework.common.nio;
 
+import com.thanple.gameserver.framework.common.nio.handler.ChannelInitializerHandler;
 import com.thanple.gameserver.framework.common.nio.handler.ServerHandler;
 import com.thanple.gameserver.framework.common.nio.protocol.PersonProtos;
 import io.netty.bootstrap.ServerBootstrap;
@@ -34,16 +35,8 @@ public class NettyServerManager {
             ServerBootstrap bootstrap = new ServerBootstrap();
             bootstrap.group(bossGroup,workerGroup)
                     .channel(NioServerSocketChannel.class)
-                    .childHandler(new ChannelInitializer<SocketChannel>() {
-                        @Override
-                        protected void initChannel(SocketChannel ch) throws Exception {
-                            ch.pipeline().addLast(new ProtobufVarint32FrameDecoder())
-                                    .addLast(new ProtobufDecoder(PersonProtos.Person.getDefaultInstance())) //Protobuf解码器
-                                    .addLast(new ProtobufVarint32LengthFieldPrepender())    //添加32位int表示报文的长度
-                                    .addLast(new ProtobufEncoder()) //Protobuf编码器
-                                    .addLast(new ServerHandler());//自定义handler
-                        }
-                    }).childOption(ChannelOption.TCP_NODELAY,true);
+                    .childHandler(new ChannelInitializerHandler())  //自定义ChannelHandler，Handler的处理入口类
+                    .childOption(ChannelOption.TCP_NODELAY,true);
             System.out.println("begin");
             //bind到本地的18080端口
             ChannelFuture future = bootstrap.bind(18080).sync();

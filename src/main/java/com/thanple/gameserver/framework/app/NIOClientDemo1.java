@@ -1,6 +1,7 @@
 package com.thanple.gameserver.framework.app;
 
 import com.google.protobuf.MessageLite;
+import com.thanple.gameserver.framework.common.nio.protocol.GameServerCMsg;
 import com.thanple.gameserver.framework.common.nio.protocol.PersonProtos;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
@@ -43,6 +44,11 @@ public class NIOClientDemo1 {
         }
 
         public MessageLite build() {
+
+            GameServerCMsg.ClientMsg.Builder clientMsgBuilder = GameServerCMsg.ClientMsg.newBuilder();
+            clientMsgBuilder.setId(1);
+
+
             PersonProtos.Person.Builder personBuilder = PersonProtos.Person.newBuilder();
             personBuilder.setEmail("lisi@gmail.com");
             personBuilder.setId(1000);
@@ -52,7 +58,9 @@ public class NIOClientDemo1 {
             personBuilder.setName("李四");
             personBuilder.addPhone(phone);
 
-            return personBuilder.build();
+            clientMsgBuilder.setMsg(personBuilder.build().toByteString());
+
+            return clientMsgBuilder.build();
         }
 
     }

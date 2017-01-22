@@ -1,9 +1,11 @@
 package com.thanple.gameserver.framework.common.nio.handler;
 
+import com.google.protobuf.ByteString;
 import com.google.protobuf.MessageLite;
 import com.thanple.gameserver.framework.common.berkeleydb.Procedure;
 import com.thanple.gameserver.framework.common.berkeleydb.entity.User;
 import com.thanple.gameserver.framework.common.berkeleydb.table.UserTable;
+import com.thanple.gameserver.framework.common.nio.protocol.GameServerCMsg;
 import com.thanple.gameserver.framework.common.nio.protocol.PersonProtos;
 import com.thanple.gameserver.framework.common.provider.TableLoader;
 import io.netty.channel.ChannelFuture;
@@ -11,15 +13,30 @@ import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
 
+import java.lang.reflect.Method;
+
 /**
  * Created by Thanple on 2017/1/20.
  */
 public class ServerHandler extends ChannelHandlerAdapter {
 
 
+    private Class<?> getClassById(int classId){
+        return PersonProtos.Person.class;
+    }
+
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        PersonProtos.Person person = (PersonProtos.Person)msg;
+        GameServerCMsg.ClientMsg clientMsg = (GameServerCMsg.ClientMsg)msg;
+
+        int id = clientMsg.getId();
+        ByteString data = clientMsg.getMsg();
+
+        Class<?> protocolCls = this.getClassById(id);
+        Method parseProtocloFromByteString = protocolCls.getDeclaredMethod("parseFrom",ByteString.class);
+        Object obj = parseProtocloFromByteString.invoke(null,data);
+
+        PersonProtos.Person person = (PersonProtos.Person)obj;
         //经过pipeline的各个decoder，到此Person类型已经可以断定
         System.out.println(person.getEmail());
         ChannelFuture future = ctx.writeAndFlush(build());

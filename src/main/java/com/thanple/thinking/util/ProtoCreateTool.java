@@ -22,7 +22,10 @@ public class ProtoCreateTool {
     public static void createJavaFile(String protoFilePath , String protoFile){
         String protocExe = Constant.Path.TOOL_PROTOC;
         String strCmd = String.format("%s -I=%s --java_out=%s %s",
-                protocExe,protoFilePath,Constant.Path.SRC_ROOT_PATH, protoFilePath+"/"+protoFile);
+                protocExe,
+                protoFilePath,
+                Constant.Path.SRC_ROOT_PATH,
+                protoFilePath+"/"+protoFile);
         //"d:/dev/protobuf-master/src/protoc.exe -I=./proto --java_out=./src/main/java ./proto/"+ protoFile;
 
         try {
@@ -42,6 +45,7 @@ public class ProtoCreateTool {
 
     public static void main(String[] args) {
 //        System.out.println(Constant.Path.RUN_CLASS_PATH+"/com/thanple/thinking/protobuf"+"\n"+"TestProto.proto");
-        createJavaFile(Constant.Path.RESOURCE_ROOT_PATH+"/com/thanple/thinking/protobuf", "TestProto.proto");
+        createJavaFile(Constant.Path.RESOURCE_ROOT_PATH+"/com/thanple/thinking/protobuf",
+                "GameServerCMsg.proto");
     }
 }
