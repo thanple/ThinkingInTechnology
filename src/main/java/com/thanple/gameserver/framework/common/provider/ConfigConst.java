@@ -2,6 +2,7 @@ package com.thanple.gameserver.framework.common.provider;
 
 
 import com.thanple.gameserver.framework.common.berkeleydb.table.TTable;
+import com.thanple.thinking.root.Constant;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -24,4 +25,20 @@ public class ConfigConst {
             e.printStackTrace();
         }
     }
+
+    //生成的协议文件包
+    public static final String CREATE_PROTOCOL_PACKAGE = "com.thanple.gameserver.framework.common.nio.protocol";
+
+    //生成的协议文件夹
+    public static final String CREATE_PROTOCOL_PROPERTIES_PATH =
+            Constant.Path.RESOURCE_ROOT_PATH + "/com/thanple/gameserver/framework/msg.protocol.create.properties";
+
+    //业务协议文件夹
+    public static final String USER_PROTOCOL_PROPERTIES_PATH =
+            Constant.Path.RESOURCE_ROOT_PATH + "/com/thanple/gameserver/framework/msg.protocol.user.properties";
+
+    //protobuf脚本所在文件夹
+    public static final String DIR_PROTOBUF =
+            Constant.Path.RESOURCE_ROOT_PATH + "/com/thanple/gameserver/framework/protobufs";
+
 }

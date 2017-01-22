@@ -1,5 +1,6 @@
 package com.thanple.gameserver.framework.common.util;
 
+import com.thanple.gameserver.framework.common.provider.ConfigConst;
 import com.thanple.thinking.root.Constant;
 
 import java.io.*;
@@ -9,7 +10,7 @@ import java.io.*;
  */
 public class CreateProtocolUtil {
 
-    public static final String Protocol_Package = "com.thanple.gameserver.framework.common.nio.protocol";
+    public static final String Protocol_Package = ConfigConst.CREATE_PROTOCOL_PACKAGE;
 
     /**
      * 通过执行cmd命令调用protoc.exe程序
