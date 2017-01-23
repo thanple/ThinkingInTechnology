@@ -10,7 +10,7 @@ import java.io.*;
  */
 public class CreateProtocolUtil {
 
-    public static final String Protocol_Package = ConfigConst.CREATE_PROTOCOL_PACKAGE;
+    public static final String Protocol_Package = "";//ConfigConst.CREATE_PROTOCOL_PACKAGE;
 
     /**
      * 通过执行cmd命令调用protoc.exe程序
@@ -42,15 +42,15 @@ public class CreateProtocolUtil {
         }
     }
 
-    public static void createUserProtocol(String dictionaryPath,String packagez,String className){
-        File dictionary = new File(dictionaryPath);
-        if(!dictionary.isDirectory())   return;
+    public static void createUserProtocol(String createPackage,String userdictionaryPath, String userPackagez,String className){
+        File dictionary = new File(userdictionaryPath);
+        if(!dictionary.exists())   dictionary.mkdirs();
         try {
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(
-                    new FileOutputStream(dictionaryPath + "/" + className + ".java")));
+                    new FileOutputStream(userdictionaryPath + "/" + className + ".java")));
 
             StringBuilder builder = new StringBuilder();
-            builder.append("package ").append(packagez).append(";\n\n");
+            builder.append("package ").append(userPackagez).append(";\n\n");
 
             //注释
             builder.append("/**").append("\n");
@@ -60,12 +60,12 @@ public class CreateProtocolUtil {
             //类
             builder.append("public class ").append(className)
                     .append(" extends ").append("\n")
-                    .append("       ").append(Protocol_Package).append(".Protocol").append("\n")
-                    .append("               ").append("<").append(Protocol_Package)
+                    .append("       ").append(createPackage).append(".Protocol").append("\n")
+                    .append("               ").append("<").append(createPackage)
                     .append("._"+className).append("."+className).append(">{").append("\n\n");
             //构造函数
             builder.append("    public ").append(className).append("(").append("\n")
-                    .append("           ").append(Protocol_Package)
+                    .append("           ").append(createPackage)
                     .append("._"+className).append("."+className).append(" msg")
                     .append("){").append("\n");
             builder.append("        super(msg);").append("\n");
@@ -85,12 +85,4 @@ public class CreateProtocolUtil {
         }
     }
 
-    public static void main(String[] args) {
-//        System.out.println(Constant.Path.RUN_CLASS_PATH+"/com/thanple/thinking/protobuf"+"\n"+"TestProto.proto");
-        createCmdProtocol(Constant.Path.RESOURCE_ROOT_PATH+"/com/thanple/thinking/protobuf",
-                "GameServerSMsg.proto");
-
-        createUserProtocol(Constant.Path.SRC_ROOT_PATH+"/com/thanple/gameserver/framework/app/msg",
-                "com.thanple.gameserver.framework.app.msg","GameServerSMsg");
-    }
 }

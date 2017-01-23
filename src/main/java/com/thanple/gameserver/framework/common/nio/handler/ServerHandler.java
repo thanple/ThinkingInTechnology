@@ -9,6 +9,7 @@ import com.thanple.gameserver.framework.common.berkeleydb.table.UserTable;
 import com.thanple.gameserver.framework.common.nio.protocol.Protocol;
 import com.thanple.gameserver.framework.common.nio.protocol._GameServerCMsg;
 import com.thanple.gameserver.framework.common.nio.protocol._Person;
+import com.thanple.gameserver.framework.common.provider.ProtocolLoader;
 import com.thanple.gameserver.framework.common.provider.TableLoader;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
@@ -23,7 +24,7 @@ import java.lang.reflect.Method;
 public class ServerHandler extends ChannelHandlerAdapter {
     
     private Class<?> getClassById(int classId){
-        return _Person.Person.class;
+        return ProtocolLoader.getInstance().getProtocolMap().get(classId).getCreate();
     }
 
     @Override
@@ -40,8 +41,7 @@ public class ServerHandler extends ChannelHandlerAdapter {
         com.google.protobuf.MessageLite messageLite = (com.google.protobuf.MessageLite)parseProtoFromByteString.invoke(null,data);
 
         //反射逻辑业务类（自定义生成）
-        Class<Protocol> logicProtocolCls = (Class<Protocol>)Class.forName(
-                "com.thanple.gameserver.framework.app.msg."+messageLite.getClass().getSimpleName());
+        Class<? extends Protocol> logicProtocolCls = ProtocolLoader.getInstance().getProtocolByName(messageLite.getClass().getSimpleName()).getUser();
         Protocol obj = logicProtocolCls.getConstructor(protocolCls).newInstance(messageLite);
 
 

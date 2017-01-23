@@ -1,9 +1,8 @@
 package com.thanple.gameserver.framework.app;
 
 import com.google.protobuf.MessageLite;
-import com.thanple.gameserver.framework.common.nio.protocol._GameServerCMsg;
-import com.thanple.gameserver.framework.common.nio.protocol._GameServerSMsg;
-import com.thanple.gameserver.framework.common.nio.protocol._Person;
+import com.thanple.gameserver.framework.common.nio.protocol.*;
+import com.thanple.gameserver.framework.common.provider.ProtocolLoader;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -13,7 +12,10 @@ import io.netty.handler.codec.protobuf.ProtobufDecoder;
 import io.netty.handler.codec.protobuf.ProtobufEncoder;
 import io.netty.handler.codec.protobuf.ProtobufVarint32FrameDecoder;
 import io.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender;
+import org.xml.sax.SAXException;
 
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
 import java.net.InetSocketAddress;
 
 /**
@@ -36,7 +38,7 @@ public class NIOClientDemo1 {
 
             _GameServerSMsg.GameServerSMsg serverSMsg = (_GameServerSMsg.GameServerSMsg)msg;
 
-            _Person.Person person = _Person.Person.parseFrom(serverSMsg.getMsg());
+            _SPerson1.SPerson1 person = _SPerson1.SPerson1.parseFrom(serverSMsg.getMsg());
 
             System.out.println(person);
         }
@@ -49,14 +51,26 @@ public class NIOClientDemo1 {
 
         public MessageLite build() {
 
+            try {
+                ProtocolLoader.getInstance().init();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ParserConfigurationException e) {
+                e.printStackTrace();
+            } catch (SAXException e) {
+                e.printStackTrace();
+            }
+
             _GameServerCMsg.GameServerCMsg.Builder clientMsgBuilder = _GameServerCMsg.GameServerCMsg.newBuilder();
-            clientMsgBuilder.setId(1);
+            String clsName = _CPerson1.CPerson1.class.getSimpleName();
+            int id = ProtocolLoader.getInstance().getClassProtocolmap().get(clsName);
+            clientMsgBuilder.setId(id);
 
 
-            _Person.Person.Builder personBuilder = _Person.Person.newBuilder();
+            _CPerson1.CPerson1.Builder personBuilder = _CPerson1.CPerson1.newBuilder();
             personBuilder.setEmail("lisi@gmail.com");
-            personBuilder.setId(1000);
-            _Person.Person.PhoneNumber.Builder phone = _Person.Person.PhoneNumber.newBuilder();
+            personBuilder.setId(0);
+            _CPerson1.CPerson1.PhoneNumber.Builder phone = _CPerson1.CPerson1.PhoneNumber.newBuilder();
             phone.setNumber("18610000000");
 
             personBuilder.setName("李四");

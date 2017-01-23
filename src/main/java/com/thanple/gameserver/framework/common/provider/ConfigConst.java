@@ -26,19 +26,20 @@ public class ConfigConst {
         }
     }
 
-    //生成的协议文件包
+    //protobuf直接生成的java文件包名
     public static final String CREATE_PROTOCOL_PACKAGE = "com.thanple.gameserver.framework.common.nio.protocol";
 
-    //生成的协议文件夹
-    public static final String CREATE_PROTOCOL_PROPERTIES_PATH =
-            Constant.Path.RESOURCE_ROOT_PATH + "/com/thanple/gameserver/framework/msg.protocol.create.properties";
 
-    //业务协议文件夹
+    //业务协议文件属性
     public static final String USER_PROTOCOL_PROPERTIES_PATH =
-            Constant.Path.RESOURCE_ROOT_PATH + "/com/thanple/gameserver/framework/msg.protocol.user.properties";
+            Constant.Path.RESOURCE_ROOT_PATH + "/com/thanple/gameserver/framework/msg.protocol.xml";
 
     //protobuf脚本所在文件夹
-    public static final String DIR_PROTOBUF =
+    public static final String DIR_PROTOBUFS =
             Constant.Path.RESOURCE_ROOT_PATH + "/com/thanple/gameserver/framework/protobufs";
+
+
+    //协议类型开始号码
+    public static final int Protocol_Type_Start_Num = 1001;
 
 }

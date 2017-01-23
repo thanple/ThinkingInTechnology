@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Coder comment="DO NOT EDIT CODER!">
+    <Protocol>com.thanple.gameserver.framework.app.person1.msg.CPerson1</Protocol>
+    <Protocol>com.thanple.gameserver.framework.app.person2.msg.CPerson2</Protocol>
+    <Protocol>com.thanple.gameserver.framework.app.person1.msg.SPerson1</Protocol>
+    <Protocol>com.thanple.gameserver.framework.app.person2.msg.SPerson2</Protocol>
+</Coder>
