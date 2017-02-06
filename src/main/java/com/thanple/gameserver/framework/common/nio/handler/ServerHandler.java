@@ -11,6 +11,7 @@ import com.thanple.gameserver.framework.common.nio.protocol._GameServerCMsg;
 import com.thanple.gameserver.framework.common.nio.protocol._Person;
 import com.thanple.gameserver.framework.common.provider.ProtocolLoader;
 import com.thanple.gameserver.framework.common.provider.TableLoader;
+import com.thanple.gameserver.framework.common.util.ExecutorUtil;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerAdapter;
@@ -46,46 +47,20 @@ public class ServerHandler extends ChannelHandlerAdapter {
 
 
         //反射得到的协议分发业务方法
-        obj.process(ctx);
+        //交由线程池处理
+        ExecutorUtil.executeInThreadPool(new Runnable(){
+            @Override
+            public void run() {
+                obj.process(ctx);
+            }
+        });
+
 
 //        ChannelFuture future = ctx.writeAndFlush(build());
         //发送数据之后，我们手动关闭channel，这个关闭是异步的，当数据发送完毕后执行。
 //        future.addListener(ChannelFutureListener.CLOSE);
     }
 
-    /**
-     * 构建一个Protobuf实例，测试
-     * @return
 
-    public MessageLite build() {
-
-        _Person.Person.Builder personBuilder = _Person.Person.newBuilder();
-        personBuilder.setEmail("zhangsan@gmail.com");
-        personBuilder.setId(1000);
-        _Person.Person.PhoneNumber.Builder phone = _Person.Person.PhoneNumber.newBuilder();
-        phone.setNumber("18610000000");
-
-
-        personBuilder.addPhone(phone);
-
-        new Procedure() {
-            @Override
-            protected boolean process() {
-
-                UserTable user = TableLoader.getTableInstance(UserTable.class);
-                User userEntity1 = user.select(1L);
-
-
-                personBuilder.setName(userEntity1.getName());
-
-                return true;
-            }
-        }.submit();
-
-
-
-
-        return personBuilder.build();
-    }*/
 
 }
