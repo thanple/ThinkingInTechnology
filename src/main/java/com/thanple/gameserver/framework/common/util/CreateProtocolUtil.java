@@ -46,8 +46,12 @@ public class CreateProtocolUtil {
         File dictionary = new File(userdictionaryPath);
         if(!dictionary.exists())   dictionary.mkdirs();
         try {
+            //只生成一次，避免覆盖
+            File file = new File(userdictionaryPath + "/" + className + ".java");
+            if (file.exists())  return;
+
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(
-                    new FileOutputStream(userdictionaryPath + "/" + className + ".java")));
+                    new FileOutputStream(file)));
 
             StringBuilder builder = new StringBuilder();
             builder.append("package ").append(userPackagez).append(";\n\n");
