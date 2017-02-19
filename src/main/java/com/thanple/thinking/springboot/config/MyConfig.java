@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-@ConfigurationProperties(prefix = "environments", ignoreUnknownFields = true)
 public class MyConfig {
 
 }
