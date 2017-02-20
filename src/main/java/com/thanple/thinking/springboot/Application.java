@@ -8,6 +8,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
@@ -20,7 +21,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication
 @Configuration
 @ComponentScan//自动扫描bean
-@EnableAutoConfiguration(exclude = {HibernateJpaAutoConfiguration.class})   //启用自动配置
+@EnableAutoConfiguration(exclude = {HibernateJpaAutoConfiguration.class,JpaRepositoriesAutoConfiguration.class})   //启用自动配置
 @EnableScheduling   //可以schedule
 public class Application implements CommandLineRunner {
 
