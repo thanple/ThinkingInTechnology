@@ -2,7 +2,7 @@ package com.thanple.application.webspider.caishuo.Dao;
 
 
 import com.thanple.application.webspider.caishuo.Model.Basket;
-import org.hibernate.classic.Session;
+import org.hibernate.Session;
 
 /**
  * Created by Administrator on 2016/8/24 0024.

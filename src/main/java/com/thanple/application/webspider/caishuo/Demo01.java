@@ -4,7 +4,7 @@ import com.thanple.application.webspider.caishuo.Dao.HibernateUtil;
 import com.thanple.application.webspider.caishuo.Model.Basket;
 import com.thanple.application.webspider.caishuo.Model.BasketInf;
 import lombok.Data;
-import org.hibernate.classic.Session;
+import org.hibernate.Session;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;

@@ -1,6 +1,5 @@
 package com.thanple.thinking.springboot.config;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 /**

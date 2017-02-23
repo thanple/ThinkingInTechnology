@@ -6,6 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * Created by Thanple on 2017/1/5.
+ *
+ * 重新编译代码 ctrl+shift+F9
  */
 @SpringBootApplication
 public class Application implements CommandLineRunner {

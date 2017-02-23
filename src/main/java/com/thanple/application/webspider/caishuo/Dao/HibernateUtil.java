@@ -1,18 +1,16 @@
 package com.thanple.application.webspider.caishuo.Dao;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.classic.Session;
-import org.hibernate.tool.hbm2ddl.SchemaExport;
-import org.hibernate.tool.hbm2ddl.SchemaValidator;
 
 /**
  * Created by Administrator on 2016/8/24 0024.
  */
 public class HibernateUtil {
     private static final SessionFactory sessionFactory;
-    private static final ThreadLocal m_session = new ThreadLocal();
+    private static final ThreadLocal<Session> m_session = new ThreadLocal<Session>();
 
     static {
         try{
