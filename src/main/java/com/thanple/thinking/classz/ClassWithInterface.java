@@ -42,7 +42,7 @@ public class ClassWithInterface {
 		
 		try {
 			obj = up.newInstance();
-		} catch (InstantiationException | IllegalAccessException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		

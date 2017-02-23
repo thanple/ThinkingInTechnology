@@ -109,7 +109,7 @@ public class Main {
             Runnable runnable = new Runnable() {
                 @Override
                 public void run() {
-                    LockKeysUtil.lock(TableLoader.getTableInstance(UserTable.class),1L,2L);  //锁排序
+//                    LockKeysUtil.lock(TableLoader.getTableInstance(UserTable.class),1L,2L);  //锁排序
                     if(count%2==0){
                         testDeadLock(1L,2L);
                     }else{
