@@ -15,7 +15,7 @@ import java.util.concurrent.atomic.AtomicLong;
  * 重新编译代码 ctrl+shift+F9
  */
 @RestController
-@RequestMapping("/hello")
+@RequestMapping("/api")
 public class HelloController {
 
     /**

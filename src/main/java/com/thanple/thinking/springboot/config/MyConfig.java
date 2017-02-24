@@ -2,6 +2,7 @@ package com.thanple.thinking.springboot.config;
 
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 /**
@@ -19,5 +20,8 @@ public class MyConfig {
 
     @Value("${MyConfig.value2}")
     private String value2;
+
+    @Value("${MyConfig.API_ON_OFF}")
+    private Boolean API_ON_OFF;
 
 }

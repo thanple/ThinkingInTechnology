@@ -44,7 +44,9 @@
             <version>${netty.version}</version>
         </dependency>
 
-        <!-- Springboot -->
+
+
+        <!-- Springboot Start -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -58,12 +60,17 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <!-- springboot 热加载-->
-        <dependency>
+        <dependency>        <!-- springboot 热加载-->
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
         </dependency>
+        <dependency>        <!-- thymeleaf视图模板引擎 -->
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <!-- Springboot End -->
+
 
 
         <!-- https://mvnrepository.com/artifact/berkeleydb/je -->
@@ -108,5 +115,19 @@
             <version>${protobuf.version}</version>
         </dependency>
     </dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
