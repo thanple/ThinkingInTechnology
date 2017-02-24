@@ -7,6 +7,7 @@ import org.springframework.boot.web.servlet.ErrorPageRegistry;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
+import org.springframework.jms.annotation.EnableJms;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -23,6 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @Configuration  //配置
 @EnableScheduling //开启自动Schedule
+@EnableJms      //开启jms
 public class AppConfig {
 
     @Autowired
