@@ -15,6 +15,11 @@ import org.springframework.stereotype.Component;
 @Data
 public class MyConfig {
 
+    @Bean("MyConfig")
+    public MyConfig myConfig(){
+        return this;
+    }
+
     @Value("${MyConfig.value1}")
     private String value1;
 
@@ -23,5 +28,8 @@ public class MyConfig {
 
     @Value("${MyConfig.API_ON_OFF}")
     private Boolean API_ON_OFF;
+
+    @Value("${MyConfig.mybatisXmlPackage}")
+    private String mybatisXmlPackage;
 
 }
