@@ -1,11 +1,9 @@
-package com.thanple.thinking.timer;
-
-import java.util.Timer;
-import java.util.TimerTask;
+package com.thanple;
 
 /**
- * Created by Thanple on 2017/3/17.
+ * Created by Thanple on 2017/3/28.
  */
+
 //L7LLvLvLvLvLvLvLvLvLvLvLvLvLvLvLvLvLvLvLvLvLvLvLvLvLvLvLvLLLvL7v7vvv7v77vvr7rr;rr77v77777v7LvLLYvLvLvLvLvLvLvLvLvLvLvLvLvLvLvLvLvLvLvLvLvLvLvYvLvLvYvv
 //L7LvLvLvLvLLLvLvLvLvLvLvLvLvLLLvLvYvLLLvvvLvLvLvLvLLYvLvLvL77r7rrirr77vrrrJUkXPFuL7r77777r7r7vLvLvLLLLLLLvLvLvLvLvLvLvLvLvLvLLLvLvLvLvLvLvLvLvLLLvLLLv
 //vvvLvLLLvLLLvLvLLLvLvLvYvLvLLYvYLLvLvLvLvLLLvLvLvLvLvLvv77r7LqZMq5kE8BMOEMB@B@B@@@BMMBM@MZk5vrr77vvLvLLLvLLLvYvLvLvLvLvYvLvLvLvLvLvLvLvLvLvLvLvLvLLYvv
@@ -94,20 +92,5 @@ import java.util.TimerTask;
 //NqGZZq0EZ088OEG8MZMMBOqMMNMMOPPNMGZMOO80ZO@riiii       :ri;Lvr::::i.::ii.   .::.,.,.,r:  .251Y.;i:;r7:i:.  OBGOGZZMN00MOMOGO88MG8kEOEqGGMMM8MOBMMOE0OX
 //0EZEqNqNP0NGG8GOOM0MMMGMOZMM51GMOOGO0GGEqOB. ..:       :;ii:rrvr:i;:.r:,:i:.  ,,  .:r: .rk1uU:.7:i:ii::,.  MGM00PZ8MPZ00NMO80O8M08O8ZOM8EMMZkFUru0PZNP
 
-public class TimerSchedule {
-
-    public static void main(String[] args) {
-        Timer t = new Timer();
-
-        t.scheduleAtFixedRate(new TimerTask() {
-
-            int count = 0;
-
-            @Override
-            public void run() {
-                System.out.println(count++);
-            }
-        },500,1000);
-
-    }
+public class UserAscii {
 }
