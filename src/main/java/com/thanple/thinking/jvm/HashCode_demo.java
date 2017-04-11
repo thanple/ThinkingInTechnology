@@ -110,7 +110,7 @@ public class HashCode_demo {
         set.add(r3);  
         r2.y = 7;  
         System.out.println("删除前的大小size:"+set.size());  
-        set.remove(r2);  
+        set.remove(r2);
         System.out.println("删除后的大小size:"+set.size());  
 		
 	}

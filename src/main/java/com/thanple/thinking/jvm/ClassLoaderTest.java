@@ -23,7 +23,7 @@ public class ClassLoaderTest {
 		
 		System.out.println(System.getProperty("sun.boot.class.path"));
 		
-		System.out.println(ClassLoader.getSystemClassLoader().loadClass("com.thanple.thinking.se.jvm.ClassLoaderTest"));
+		System.out.println(ClassLoader.getSystemClassLoader().loadClass(ClassLoaderTest.class.getName()));
 			
 	}
 
