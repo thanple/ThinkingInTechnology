@@ -22,7 +22,7 @@ public class DBManager  {
         private Environment environment;
 
         //是否open
-        public boolean isOpen = false;
+        public volatile boolean isOpen = false;
 
         //Singleton
         private static DBManager berkeleyDBManager = new DBManager();

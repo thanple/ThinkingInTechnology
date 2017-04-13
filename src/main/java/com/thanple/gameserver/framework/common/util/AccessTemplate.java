@@ -32,8 +32,8 @@ public class AccessTemplate <K extends Serializable, V extends Serializable>{
     public boolean insert(K key, V value, Transaction transaction ,boolean isOverwrite){
         OperationStatus status = null;
         try {
-            DatabaseEntry keyEntry = new DatabaseEntry(com.thanple.thinking.util.SerializeUtil.serialize(key));
-            DatabaseEntry valEntry = new DatabaseEntry(com.thanple.thinking.util.SerializeUtil.serialize(value));
+            DatabaseEntry keyEntry = new DatabaseEntry(SerializeUtil.serialize(key));
+            DatabaseEntry valEntry = new DatabaseEntry(SerializeUtil.serialize(value));
 
             if (isOverwrite) {
                 status = database.put(transaction, keyEntry, valEntry);
@@ -55,7 +55,7 @@ public class AccessTemplate <K extends Serializable, V extends Serializable>{
     public V findOne(K key,Transaction transaction){
         byte [] result = null;
         try {
-            DatabaseEntry keyEntry = new DatabaseEntry(com.thanple.thinking.util.SerializeUtil.serialize(key));
+            DatabaseEntry keyEntry = new DatabaseEntry(SerializeUtil.serialize(key));
             DatabaseEntry valueEntry = new DatabaseEntry();
 
             OperationStatus status = database.get(transaction, keyEntry, valueEntry, LockMode.DEFAULT);

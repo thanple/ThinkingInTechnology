@@ -6,6 +6,8 @@ import com.thanple.gameserver.framework.common.berkeleydb.entity.User;
 import com.thanple.gameserver.framework.common.berkeleydb.table.UserTable;
 import com.thanple.gameserver.framework.common.provider.TableLoader;
 
+import java.util.concurrent.ExecutionException;
+
 /**
  * Created by Thanple on 2017/1/20.
  */
@@ -13,7 +15,7 @@ public class DBDemo1 {
 
     private static DBManager manager = DBManager.getInstance();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
         manager.open();
 
         new Procedure() {
@@ -40,7 +42,7 @@ public class DBDemo1 {
 
                 return true;
             }
-        }.submit();
+        }.call();
 
         new Procedure() {
             @Override
@@ -55,7 +57,11 @@ public class DBDemo1 {
 
                 return true;
             }
-        }.submit();
+        }.call();
 
+
+        Thread.sleep(2000);
+        manager.close();
+        System.exit(0);
     }
 }

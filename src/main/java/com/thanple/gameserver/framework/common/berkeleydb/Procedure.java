@@ -3,13 +3,18 @@ package com.thanple.gameserver.framework.common.berkeleydb;
 
 import com.thanple.gameserver.framework.common.berkeleydb.table.TTable;
 import com.thanple.gameserver.framework.common.exception.BerkeleyNotInProcedureException;
+import com.thanple.gameserver.framework.common.util.ExecutorUtil;
 import com.thanple.gameserver.framework.common.util.LockKeysUtil;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
 /**
  * Created by Thanple on 2017/1/13.
+ *
+ * 每个Procedure都是一个线程，包括同步和异步，线程之间遵循可串行化事务隔离度
  */
 public abstract class Procedure {
 
@@ -24,27 +29,22 @@ public abstract class Procedure {
             return new ArrayList<Procedure>();
         }
     };
+    private ThreadLocal<ArrayList<Procedure>> procedureAfterCommitList = new ThreadLocal<ArrayList<Procedure>>(){
+        protected ArrayList<Procedure> initialValue() {
+            return new ArrayList<Procedure>();
+        }
+    };
+    private ThreadLocal<ArrayList<Procedure>> procedureAfterRollBackList = new ThreadLocal<ArrayList<Procedure>>(){
+        protected ArrayList<Procedure> initialValue() {
+            return new ArrayList<Procedure>();
+        }
+    };
 
     //回调处理函数
     protected abstract boolean process();
 
-    /*
-    * 运行Procedure，但是不提交事务，运行完后所有结果保存在BerkeleyTransaction中
-    * */
-    private void runProcedure(){
 
-        //保存处理结果
-        boolean result = this.process();
-        TransactionManager.savePoint(result);
-
-        //子Procedure处理结果
-        for (Procedure p : procedureList.get()){
-            p.runProcedure();
-        }
-    }
-
-    public void submit(){
-
+    private boolean runProcedure(){
         try {
 
             //进入Procedure标志
@@ -53,8 +53,7 @@ public abstract class Procedure {
             //开启事务
             TransactionManager.startTransaction();
 
-            //执行procedure
-            this.runProcedure();
+            this.process();
 
             //更新锁住的数据（即get出来的数据）
             for(LockKeysUtil.LockItem lockItem : LockKeysUtil.getLocalLockItems()){
@@ -65,9 +64,8 @@ public abstract class Procedure {
                 tTable.save(key,entityValue);
             }
 
-
         }catch (Exception e){
-            TransactionManager.savePoint(false);    //回滚事务
+            TransactionManager.savePoint(false);    //回滚事务标志
             e.printStackTrace();
         }finally {
 
@@ -77,19 +75,59 @@ public abstract class Procedure {
             //释放keylock(这样做的好处是当前Procedure如果抛出异常也继续释放锁)
             LockKeysUtil.unlockAll();
 
-            //提交事务
-            TransactionManager.commit();
+            //提交事务(返回false时已经提交)
+            boolean transactionSucess = TransactionManager.commit();
+            if(transactionSucess){
+                procedureAfterCommitList.get().forEach(p->{
+                    p.submit();
+                });
+            }else{
+                procedureAfterRollBackList.get().forEach(p->{
+                    p.submit();
+                });
+            }
+            procedureList.get().forEach(p->{
+                p.submit();
+            });
 
             //离开Procedure标志
             BerkeleyNotInProcedureException.endInTheProcedure();
-        }
 
+            return transactionSucess;
+        }
     }
 
-    //同步执行函数,当形参执行完后执行
-    //放到队列里面，等commit的时候统一执行
+
+    public Future<Boolean> submit(){
+        Future<Boolean> future = ExecutorUtil.executeFuture(()-> Procedure.this.runProcedure());
+        return future;
+    }
+
+    /**
+     * 同步执行函数Call，等待Procedure执行完之后执行
+     * */
+    public boolean call(Procedure procedure) throws ExecutionException, InterruptedException {
+        return procedure.call();
+    }
+    public boolean call() throws ExecutionException, InterruptedException {
+        return this.submit().get();
+    }
+
+    //异步执行函数,当父Procedure执行完后执行
     public void pexecute(Procedure procedure){
         procedureList.get().add(procedure);
     }
+
+    //异步执行函数，当父Procedure提交后执行
+    public void pexecuteWhileCommit(Procedure procedure){
+        procedureAfterCommitList.get().add(procedure);
+    }
+
+    //异步执行函数，当父Procedure回滚后执行
+    public void pexecuteWhileRollBack(Procedure procedure){
+        procedureAfterRollBackList.get().add(procedure);
+    }
+
+
 
 }

@@ -19,8 +19,9 @@ public class ExecutorUtil {
     public static void executeInThreadPool(Runnable runnable){
         executorThreadPool.execute(runnable);
     }
-    public static Future<?> executeFuture (Runnable runnable){
-        return executorThreadPool.submit(runnable);
+
+    public static <T> Future<T> executeFuture (Callable<T> callable){
+        return executorThreadPool.submit(callable);
     }
 
 

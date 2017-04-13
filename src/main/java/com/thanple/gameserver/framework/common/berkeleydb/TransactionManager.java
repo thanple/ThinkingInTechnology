@@ -49,7 +49,10 @@ public class TransactionManager {
         }
     }
 
-    //提交或者回滚事务
+    /**
+     * 提交或者回滚事务
+     * 当提交成功时返回true，回滚时返回false
+     * */
     public static boolean commit(){
         boolean rs = true;
         for(Boolean e : results.get()){
