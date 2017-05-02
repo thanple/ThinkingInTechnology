@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 
 /**
  * Created by Thanple on 2017/1/5.
@@ -22,7 +23,9 @@ public class Application implements CommandLineRunner {
     private MyConfig myConfig;
 
     public static void main(String[] args) throws Exception {
-        SpringApplication.run(Application.class, args);
+        ApplicationContext ctx = SpringApplication.run(Application.class, args);
+        MyConfig myConfig = (MyConfig) ctx.getBean("MyConfig");
+        System.out.println(myConfig);
     }
 
     @Override
