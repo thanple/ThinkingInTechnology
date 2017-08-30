@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 /**
  * Created by Thanple on 2017/4/11.
  *
- * Java8的新特性
+ * Java8的新特性222
  */
 
 public class Java8 {
