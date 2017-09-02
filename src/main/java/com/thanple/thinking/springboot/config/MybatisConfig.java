@@ -23,7 +23,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableTransactionManagement
-public class MyBatisConfig implements TransactionManagementConfigurer {
+public class MybatisConfig implements TransactionManagementConfigurer {
 
     @Autowired
     private DataSource dataSource;
