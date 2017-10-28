@@ -1,4 +1,4 @@
-package com.thanple.thinking;
+package com.thanple.thinking.timer;
 
 import lombok.Data;
 import lombok.ToString;
