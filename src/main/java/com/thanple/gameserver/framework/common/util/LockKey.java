@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Created by Thanple on 2017/1/17.
@@ -108,6 +109,32 @@ public class LockKey <K> {
         }
         //清空local
         local.get().clear();
+    }
+
+
+    public static void main(String[] args) throws InterruptedException {
+        ReentrantLock lock = new ReentrantLock();
+
+
+        lock.lockInterruptibly();
+        System.out.println("1");
+        lock.lockInterruptibly();
+        System.out.println("2");
+        lock.unlock();
+        new Thread(){
+            @Override
+            public void run() {
+                try {
+                    lock.lockInterruptibly();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("3");
+            }
+        }.start();
+
+
+
     }
 
 }
