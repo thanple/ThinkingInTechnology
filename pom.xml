@@ -179,6 +179,12 @@
         </dependency>
         <!-- hadoop end -->
 
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.35</version>
+        </dependency>
+
     </dependencies>
 
 
