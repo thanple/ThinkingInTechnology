@@ -54,13 +54,17 @@ public class SearchAlex {
 
     public Document getDocument(String url){
         HttpGet newGet = new HttpGet(url);
+        //设置请求报文头的编码
+        newGet.setHeader("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
+        //设置期望返回的报文头编码
+        newGet.setHeader("Accept", "text/plain;charset=utf-8");
         try {
             CloseableHttpResponse res = httpClient.execute(newGet, context);
-            String content = EntityUtils.toString(res.getEntity());
+            String content = EntityUtils.toString(res.getEntity(), "UTF-8");
+
             Document doc = Jsoup.parse(content);
 
             return doc;
-
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -70,13 +74,13 @@ public class SearchAlex {
 
     public static void main(String[] args) {
 
-        String basicUrl = "https://372mk.com";
-        String pageBasicUrl = basicUrl+"/down/3";
+        String basicUrl = "https://www.859mk.com";
+        String pageBasicUrl = basicUrl+"/down/2";
         String pageTemplate = pageBasicUrl+"/index_%s.html";
 
         SearchAlex alex = new SearchAlex();
         alex.createContext();
-        for(int i = 1;i<=165;i++) {
+        for(int i = 1;i<=100;i++) {
 
             String page = String.format(pageTemplate,i+"");
             if(i == 1) {
@@ -92,9 +96,9 @@ public class SearchAlex {
             Elements hrefs = box_movie2_list.getElementsByTag("a");
             for(Element e : hrefs) {
                 String detailUrl = basicUrl + e.attr("href");
-                String title = e.getElementsByTag("h3").first().html();
+                String title = e.getElementsByTag("h3").first().text();
 
-                if(title.contains("Alex")) {
+                if(title.contains("吉")) {
                     System.out.println(detailUrl);
                     System.out.println(title);
                 }
